@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RTP 161-D — Gráficas</title>
+<link rel="stylesheet" href="/static/styles.css">
+<link rel="stylesheet" href="/static/graficas.css">
+</head>
+
+<body>
+<div class="contenedor">
+    <div class="nav">
+        <a href="/">📝 Registrar</a>
+        <a href="/graficas" class="activo">📊 Gráficas</a>
+    </div>
+
+    <div class="titulo">📊 Estadísticas</div>
+    <div class="subtitulo">Analiza tus tiempos de espera.</div>
+
+    <!-- Filtro solo por ruta -->
+    <div class="card">
+        <label>Dirección</label>
+        <select id="selectDireccion">
+            <option value="">-- Cargando... --</option>
+        </select>
+    </div>
+
+    <!-- Stats resumen -->
+    <div class="stats-row">
+        <div class="stat-box">
+            <div class="stat-label">Total registros</div>
+            <div class="stat-value" id="statTotal">—</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Paradas con datos</div>
+            <div class="stat-value" id="statParadas">—</div>
+        </div>
+    </div>
+
+    <!-- Gráfica 1: Hora promedio por parada -->
+    <div class="grafica-card">
+        <h3>⏰ Hora promedio por parada</h3>
+        <div class="descripcion">A qué hora promedio suele pasar el camión en cada parada.</div>
+        <canvas id="graficaPromedios"></canvas>
+    </div>
+
+    <!-- Gráfica 2: Cantidad de registros por parada -->
+    <div class="grafica-card">
+        <h3>📊 Registros por parada</h3>
+        <div class="descripcion">Cuántas veces has registrado cada parada.</div>
+        <canvas id="graficaCantidad"></canvas>
+    </div>
+
+    <!-- Gráfica 3: Línea del tiempo -->
+    <div class="grafica-card">
+        <h3>📈 Línea del tiempo</h3>
+        <div class="descripcion">Cada punto es un registro, coloreado por parada.</div>
+        <canvas id="graficaTimeline"></canvas>
+    </div>
+</div>
+<!-- Predicción -->
+<div class="grafica-card">
+    <h3>🎯 Predicción de llegada</h3>
+    <div class="descripcion">Basado en tus registros históricos.</div>
+
+    <label>Día a predecir</label>
+    <select id="selectDiaPredecir">
+        <option>Lunes</option>
+        <option>Martes</option>
+        <option>Miércoles</option>
+        <option>Jueves</option>
+        <option>Viernes</option>
+        <option>Sábado</option>
+        <option>Domingo</option>
+    </select>
+
+    <label>Parada</label>
+    <select id="selectParadaPredecir">
+        <option value="">-- Cargando... --</option>
+    </select>
+
+    <div id="prediccion" style="margin-top: 20px;"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/static/graficas.js"></script>
+</body>
+</html>
